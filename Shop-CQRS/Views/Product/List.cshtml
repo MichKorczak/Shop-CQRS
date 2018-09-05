@@ -2,14 +2,33 @@
 
 @foreach (var p in Model.Products)
 {
+
     <div>
-        <h3>@p.Name</h3>
-        @p.Description
-        <h4>@p.Category</h4>
-        <h4>@p.NumberOfIrems</h4>
-        <h4>@p.Price</h4>
+        <div>
+            <span class="badge badge-success">
+                Ilość dostępnych egzęplarzy: @p.NumberOfIrems szt.
+            </span>
+        </div>
+        <div class="card card-outline-secondary m-1 p-1">
+            <div>
+                <h4>
+                    @p.Name <small>(@p.Category)</small>
+                    <span class="badge badge-success" style="float: right">
+                        <small>
+                            @p.Price.ToString("c")
+                        </small>
+                    </span>
+                </h4>
+            </div>
+            <div class="card-text p-1">
+                @p.Description
+            </div>
+        </div>
     </div>
 }
 
-<div page-model="@Model.PagingInfo" page-action="List"></div>
-<div>Liczba elementów na stronie: <a href="2">2 </a><a href="4">4 </a><a href="6">6</a></div>
+<div page-model="@Model.PagingInfo" page-action="List" page-classes-eneable="true"
+     page-class="btn" page-class-normal="btn-secondary"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+</div>
+<div>Liczba elementów na stronie: <a href="/Product/List/2">2 </a><a href="/Product/List/4">4 </a><a href="/Product/List/6">6</a></div>

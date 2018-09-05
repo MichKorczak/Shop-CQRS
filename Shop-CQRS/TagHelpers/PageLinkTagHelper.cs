@@ -23,6 +23,11 @@ namespace Shop_CQRS.TagHelpers
         public PagingInfo PageModel { get; set; }
         public string PageAction { get; set; }
 
+        public bool PageClassesEneable { get; set; } = false;
+        public string PageClass { get; set; }
+        public string PageClassNormal { get; set; }
+        public string PageClassSelected { get; set; }
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             IUrlHelper helper = factory.GetUrlHelper(ViewContext);
@@ -32,6 +37,11 @@ namespace Shop_CQRS.TagHelpers
             {
                 TagBuilder tag = new TagBuilder("a");
                 tag.Attributes["href"] = helper.Action(PageAction, new {productPage = i});
+                if (PageClassesEneable)
+                {
+                    tag.AddCssClass(PageClass);
+                    tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
+                }
                 tag.InnerHtml.Append(i.ToString());
                 builder.InnerHtml.AppendHtml(tag);
             }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,23 +44,19 @@ namespace Shop_CQRS
             {
                 routes.MapRoute(
                     name: null,
-                    template: "PageSize{pageSize:int}/Strona{productPage:int}",
-                    defaults: new {controller = "Product", action = "List" }
+                    template: "{controller=Product}/{action=List}/Page{productPage}/{pageSize:int}"
                 );
                 routes.MapRoute(
                     name: null,
-                    template: "Strona{productPage:int}",
-                    defaults: new {controller = "Product", action = "List", productPage = 1 }
+                    template: "{controller=Product}/{action=List}/Page{productPage:int}"
                 );
                 routes.MapRoute(
                     name: null,
-                    template: "PageSize{pageSize:int}",
-                    defaults: new { controller = "Product", action = "List", productPage = 1 }
+                    template: "{controller=Product}/{action=List}/{pageSize:int}"
                 );
                 routes.MapRoute(
                     name: null,
-                    template: "",
-                    defaults: new { controller = "Product", action = "List",pageSize = 4, productPage = 1 }
+                    template: "{controller=Product}/{action=List}"
                 );
             });
             SeedDataCategory.EnsurePopulated(app);

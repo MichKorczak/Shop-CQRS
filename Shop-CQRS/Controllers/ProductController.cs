@@ -15,16 +15,16 @@ namespace Shop_CQRS.Controllers
             this.product = product;
         }
 
-        public async Task<ViewResult> List(int pageSize = 4, int productPage = 1)
+        public async Task<ViewResult> List(int PageSize = 4, int productPage = 1)
         {
             var response = await product.GetProductListAsync();
             var modelResponse = new ProductListViewModel
             {
-                Products = response.Skip((productPage - 1) * pageSize).Take(pageSize),
+                Products = response.Skip((productPage - 1) * PageSize).Take(PageSize),
                 PagingInfo = new PagingInfo
                 {
                     TotalItems = response.Count,
-                    ItemsPerPage = pageSize,
+                    ItemsPerPage = PageSize,
                     CurrentPage = productPage
                 }
             };

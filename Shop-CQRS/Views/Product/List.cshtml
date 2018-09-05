@@ -1,0 +1,15 @@
+﻿@model ProductListViewModel
+
+@foreach (var p in Model.Products)
+{
+    <div>
+        <h3>@p.Name</h3>
+        @p.Description
+        <h4>@p.Category</h4>
+        <h4>@p.NumberOfIrems</h4>
+        <h4>@p.Price</h4>
+    </div>
+}
+
+<div page-model="@Model.PagingInfo" page-action="List"></div>
+<a>Liczba elementów na stronie: </a><a href="PageSize2">2 </a><a href="PageSize4">4 </a><a href="PageSize6">6</a>

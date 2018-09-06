@@ -4,8 +4,8 @@ using Shop_CQRS.Core.Domain;
 
 namespace Shop_CQRS.Infrastructure.QueryHandler.Interface
 {
-    public interface IQueryProduct
+    public interface IQueryCategory
     {
-        Task<List<Product>> GetProductListAsync(string category);
+        IEnumerable<Category> GetCategoryList();
     }
 }

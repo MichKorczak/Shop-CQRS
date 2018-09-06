@@ -8,16 +8,15 @@ using Shop_CQRS.Infrastructure.QueryHandler.Interface;
 
 namespace Shop_CQRS.Infrastructure.QueryHandler.Implementation
 {
-    public class QueryProduct : IQueryProduct
+    public class QueryCategory : IQueryCategory
     {
         private readonly DomainContext context;
 
-        public QueryProduct(DomainContext context)
+        public QueryCategory(DomainContext context)
         {
             this.context = context;
         }
 
-        public async Task<List<Product>> GetProductListAsync(string category) => 
-            await context.Products.Where(x => category == null || x.Category.Name == category).ToListAsync();
+        public IEnumerable<Category> GetCategoryList() => context.Categories.AsEnumerable();
     }
 }

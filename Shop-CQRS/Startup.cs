@@ -29,6 +29,7 @@ namespace Shop_CQRS
 
             services.AddTransient<IBus, Bus>();
             services.AddTransient<IQueryProduct, QueryProduct>();
+            services.AddTransient<IQueryCategory, QueryCategory>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

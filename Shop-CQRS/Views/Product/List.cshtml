@@ -12,7 +12,7 @@
         <div class="card card-outline-secondary m-1 p-1">
             <div>
                 <h4>
-                    @p.Name <small>(@p.Category)</small>
+                    @p.Name
                     <span class="badge badge-success" style="float: right">
                         <small>
                             @p.Price.ToString("c")
@@ -29,6 +29,5 @@
 
 <div page-model="@Model.PagingInfo" page-action="List" page-classes-eneable="true"
      page-class="btn" page-class-normal="btn-secondary"
-     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+     page-class-selected="btn-primary" page-url-category="@Model.CurrentCategory" class="btn-group pull-right m-1">
 </div>
-<div>Liczba elementów na stronie: <a href="/Product/List/2">2 </a><a href="/Product/List/4">4 </a><a href="/Product/List/6">6</a></div>
